@@ -6,13 +6,13 @@ public class CalcNumbers {
 
 	public static void main(String[] args) throws InterruptedException {
 		int time = (int) new Date().getTime();
-		int x1 = 85_000_000;
-		int x2 = 103_000_000;
-		int x3 = 105_500_000;
-		int x4 = 107_500_000;
-		int x5 = 108_750_000;
-		int x6 = 109_400_000;
-		int x7 = 109_700_000;
+		int x1 = 50_000_000;
+		int x2 = 75_000_000;
+		int x3 = 100_000_000;
+		int x4 = 125_000_000;
+		int x5 = 150_000_000;
+		int x6 = 175_000_000;
+		int x7 = 195_000_000;
 		int x8 = 200_000_000;
 
 		CalcThread t0 = new CalcThread(2, x1);
@@ -27,36 +27,36 @@ public class CalcNumbers {
 		t0.start();
 
 		while (t0.iter < x1 / 2) {
-			Thread.sleep(100);
+			Thread.sleep(1000);
 		}
 		t1.start();
 
 		while (t0.iter < x2 / 2) {
-			Thread.sleep(100);
+			Thread.sleep(1000);
 		}
 		t2.start();
 
 		while (t1.iter < x3 / 2) {
-			Thread.sleep(100);
+			Thread.sleep(1000);
 		}
 		t3.start();
 
 		while (t1.iter < x4 / 2) {
-			Thread.sleep(100);
+			Thread.sleep(1000);
 		}
 		t4.start();
 
 		while (t1.iter < x5 / 2) {
-			Thread.sleep(100);
+			Thread.sleep(1000);
 		}
 		t5.start();
 
-		while (t1.iter < x6 / 2) {
-			Thread.sleep(100);
+		while (t2.iter < x6 / 2) {
+			Thread.sleep(1000);
 		}
 		t6.start();
-		while (t1.iter < x7 / 2) {
-			Thread.sleep(100);
+		while (t3.iter < x7 / 2) {
+			Thread.sleep(1000);
 		}
 		t7.start();
 
