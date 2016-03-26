@@ -2,20 +2,20 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class CalcNumbers {
-	public static ArrayList<Integer> list = new ArrayList<>();
+	public static ArrayList<Long> list = new ArrayList<>();
 
 	public static void main(String[] args) throws InterruptedException {
-		int time = (int) new Date().getTime();
+		long time = (long ) new Date().getTime();
 
-		int x8 = 1000_000_000;
+		long x8 = 1_000_000_000L;
 
-		int x1 = x8 / 8;
-		int x2 = x1 * 2;
-		int x3 = x1 * 3;
-		int x4 = x1 * 4;
-		int x5 = x1 * 5;
-		int x6 = x1 * 6;
-		int x7 = x1 * 7;
+		long x1 = x8 / 8;
+		long x2 = x1 * 2;
+		long x3 = x1 * 3;
+		long x4 = x1 * 4;
+		long x5 = x1 * 5;
+		long x6 = x1 * 6;
+		long x7 = x1 * 7;
 
 		CalcThread t0 = new CalcThread(7, x1);
 		CalcThread t1 = new CalcThread(x1, x2);
@@ -25,9 +25,9 @@ public class CalcNumbers {
 		CalcThread t5 = new CalcThread(x5, x6);
 		CalcThread t6 = new CalcThread(x6, x7);
 		CalcThread t7 = new CalcThread(x7, x8);
-		list.add(2);
-		list.add(3);
-		list.add(5);
+		list.add(2l);
+		list.add(3l);
+		list.add(5l);
 		
 		t0.start();
 
@@ -75,12 +75,12 @@ public class CalcNumbers {
 		t6.join();
 		t7.join();
 
-		time = (int) new Date().getTime() - time;
+		time = (long ) new Date().getTime() - time;
 		System.out.println("count " + list.size());
 		System.out.println("time " + ((double) time / 1000));
 	}
 
-	synchronized public static void addToList(int num) {
+	synchronized public static void addToList(long  num) {
 		list.add(num);
 	}
 }
