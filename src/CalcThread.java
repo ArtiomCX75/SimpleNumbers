@@ -6,9 +6,9 @@ public class CalcThread extends Thread {
 	public int iter;
 
 	public CalcThread(int from, int to) {
-		if(from%2==0)
+		if (from % 2 == 0)
 			from--;
-		if(to%2==0)
+		if (to % 2 == 0)
 			to--;
 		fromnum = from;
 		tonum = to;
@@ -16,36 +16,52 @@ public class CalcThread extends Thread {
 
 	@Override
 	public void run() {
-		 System.out.println(this.getName()+" starts");
+		System.out.println(this.getName() + " starts");
 		calc();
-		 System.out.println(this.getName()+" ends");
+		System.out.println(this.getName() + " ends");
 	}
 
 	public void calc() {
-		for (iter = fromnum; iter < tonum; iter+=2) {
-			
+		int sumofnum;
+		for (iter = fromnum; iter < tonum; iter += 2) {
+			sumofnum = (int) divByThree(iter);
+			if ((iter % 5 == 0) || (sumofnum == 3) || (sumofnum == 6) || (sumofnum == 9))
+				continue;
 			if (hasDiv(iter)) {
-			//	 System.out.println(this.getName()+" contains " + iter);
+				// System.out.println(this.getName()+" contains " + iter);
 			} else {
 				CalcNumbers.addToList(iter);
-			//	 System.out.println(this.getName()+"           add " + iter);
+				// System.out.println(this.getName()+" add " + iter);
 			}
-		//	if((iter-1)%10_000_000==0)
-		//		System.out.println("Current size is "+CalcNumbers.list.size());
-			
+			// if((iter-1)%10_000_000==0)
+			// System.out.println("Current size is "+CalcNumbers.list.size());
 		}
 	}
 
 	public boolean hasDiv(int num) {
-		
+		long fromList;
 		for (int i = 0; i < CalcNumbers.list.size(); i++) {
-			if (num % CalcNumbers.list.get(i) == 0) {
+			fromList = CalcNumbers.list.get(i);
+			if (num % fromList == 0) {
 				return true;
 			}
-			if(CalcNumbers.list.get(i)>Math.sqrt(num)+1){
+			if (Math.multiplyExact(fromList, fromList) > num) {
 				return false;
 			}
 		}
-		return false;
+		return false; // заменить на умножение
+	}
+
+	public long divByThree(long num) {
+		if (num < 10)
+			return num;
+		String s = new Long(num).toString();
+		int sum = 0;
+		for (int i = 0; i < s.length(); i++) {
+			sum += new Integer(s.substring(i, i + 1));
+		}
+		if (sum > 9)
+			divByThree(sum);
+		return sum;
 	}
 }

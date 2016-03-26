@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashSet;
 
 public class CalcNumbers {
 	public static ArrayList<Integer> list = new ArrayList<>();
@@ -8,7 +7,7 @@ public class CalcNumbers {
 	public static void main(String[] args) throws InterruptedException {
 		int time = (int) new Date().getTime();
 
-		int x8 = 1_000_000_000;
+		int x8 = 1000_000_000;
 
 		int x1 = x8 / 8;
 		int x2 = x1 * 2;
@@ -18,7 +17,7 @@ public class CalcNumbers {
 		int x6 = x1 * 6;
 		int x7 = x1 * 7;
 
-		CalcThread t0 = new CalcThread(3, x1);
+		CalcThread t0 = new CalcThread(7, x1);
 		CalcThread t1 = new CalcThread(x1, x2);
 		CalcThread t2 = new CalcThread(x2, x3);
 		CalcThread t3 = new CalcThread(x3, x4);
@@ -27,40 +26,50 @@ public class CalcNumbers {
 		CalcThread t6 = new CalcThread(x6, x7);
 		CalcThread t7 = new CalcThread(x7, x8);
 		list.add(2);
+		list.add(3);
+		list.add(5);
+		
 		t0.start();
 
 		while (t0.iter < Math.sqrt(x1)) {
-			Thread.sleep(1);
+			Thread.sleep(10);
 		}
 		t1.start();
 
 		while (t0.iter < Math.sqrt(x2)) {
-			Thread.sleep(1);
+			Thread.sleep(10);
 		}
+		Thread.sleep(1500);
 		t2.start();
 
 		while (t0.iter < Math.sqrt(x3)) {
-			Thread.sleep(1);
+			Thread.sleep(10);
 		}
+		Thread.sleep(1500);
 		t3.start();
 
 		while (t0.iter < Math.sqrt(x4)) {
-			Thread.sleep(1);
+			Thread.sleep(10);
 		}
+		Thread.sleep(1500);
 		t4.start();
 
 		while (t0.iter < Math.sqrt(x5)) {
 			Thread.sleep(10);
 		}
+		Thread.sleep(1500);
 		t5.start();
 
 		while (t0.iter < Math.sqrt(x6)) {
-			Thread.sleep(1);
+			Thread.sleep(10);
 		}
+		Thread.sleep(1500);
 		t6.start();
+		
 		while (t0.iter < Math.sqrt(x7)) {
-			Thread.sleep(1);
+			Thread.sleep(10);
 		}
+		Thread.sleep(1500);
 		t7.start();
 
 		t0.join();
