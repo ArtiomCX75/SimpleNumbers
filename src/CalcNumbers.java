@@ -39,37 +39,31 @@ public class CalcNumbers {
 		while (t0.iter < Math.sqrt(x2)) {
 			Thread.sleep(10);
 		}
-		Thread.sleep(1500);
 		t2.start();
 
 		while (t0.iter < Math.sqrt(x3)) {
 			Thread.sleep(10);
 		}
-		Thread.sleep(1500);
 		t3.start();
 
 		while (t0.iter < Math.sqrt(x4)) {
 			Thread.sleep(10);
 		}
-		Thread.sleep(1500);
 		t4.start();
 
 		while (t0.iter < Math.sqrt(x5)) {
 			Thread.sleep(10);
 		}
-		Thread.sleep(1500);
 		t5.start();
 
 		while (t0.iter < Math.sqrt(x6)) {
 			Thread.sleep(10);
 		}
-		Thread.sleep(1500);
 		t6.start();
 		
 		while (t0.iter < Math.sqrt(x7)) {
 			Thread.sleep(10);
 		}
-		Thread.sleep(1500);
 		t7.start();
 
 		t0.join();
@@ -82,8 +76,7 @@ public class CalcNumbers {
 		t7.join();
 
 		time = (int) new Date().getTime() - time;
-
-		System.out.println("count1 " + list.size());
+		System.out.println("count " + list.size());
 		System.out.println("time " + ((double) time / 1000));
 	}
 

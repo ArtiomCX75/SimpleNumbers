@@ -1,6 +1,5 @@
 
 public class CalcThread extends Thread {
-
 	int fromnum;
 	int tonum;
 	public int iter;
@@ -22,10 +21,8 @@ public class CalcThread extends Thread {
 	}
 
 	public void calc() {
-		int sumofnum;
 		for (iter = fromnum; iter < tonum; iter += 2) {
-			sumofnum = (int) divByThree(iter);
-			if ((iter % 5 == 0) || (sumofnum == 3) || (sumofnum == 6) || (sumofnum == 9))
+			if ((iter % 5 == 0) || (iter % 3 == 0))
 				continue;
 			if (hasDiv(iter)) {
 				// System.out.println(this.getName()+" contains " + iter);
@@ -33,8 +30,6 @@ public class CalcThread extends Thread {
 				CalcNumbers.addToList(iter);
 				// System.out.println(this.getName()+" add " + iter);
 			}
-			// if((iter-1)%10_000_000==0)
-			// System.out.println("Current size is "+CalcNumbers.list.size());
 		}
 	}
 
@@ -49,19 +44,6 @@ public class CalcThread extends Thread {
 				return false;
 			}
 		}
-		return false; // заменить на умножение
-	}
-
-	public long divByThree(long num) {
-		if (num < 10)
-			return num;
-		String s = new Long(num).toString();
-		int sum = 0;
-		for (int i = 0; i < s.length(); i++) {
-			sum += new Integer(s.substring(i, i + 1));
-		}
-		if (sum > 9)
-			divByThree(sum);
-		return sum;
+		return false;
 	}
 }
